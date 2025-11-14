@@ -1,4 +1,6 @@
 using ClassLibrary.DataAccess;
+using ClassLibrary.Repository;
+using ClassLibrary.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExamPlan
@@ -16,6 +18,10 @@ namespace ExamPlan
             builder.Services.AddDbContext<ExamContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
             );
+
+            // Register Repository and Service layers
+            builder.Services.AddScoped<PersonRepo>();
+            builder.Services.AddScoped<IPersonService, PersonService>();
 
             var app = builder.Build();
 

@@ -17,6 +17,16 @@ namespace ExamPlan
             options.UseSqlServer(builder.Configuration.GetConnectionString("Default"))
             );
 
+            // Register Repository and Service layers
+            builder.Services.AddScoped<PersonRepo>();
+            builder.Services.AddScoped<IPersonService, PersonService>();
+            
+            builder.Services.AddScoped<HoldRepo>();
+            builder.Services.AddScoped<IHoldService, HoldService>();
+            
+            builder.Services.AddScoped<ExamRepo>();
+            builder.Services.AddScoped<IExamService, ExamService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -22,6 +22,9 @@ namespace ExamPlan
             // Register Repository and Service layers
             builder.Services.AddScoped<PersonRepo>();
             builder.Services.AddScoped<IPersonService, PersonService>();
+            
+            builder.Services.AddScoped<HoldRepo>();
+            builder.Services.AddScoped<IHoldService, HoldService>();
 
             var app = builder.Build();
 

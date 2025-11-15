@@ -1,4 +1,6 @@
 using ClassLibrary.DataAccess;
+using ClassLibrary.Repository;
+using ClassLibrary.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExamPlan

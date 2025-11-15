@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.ViewModel
 {
-    public class Hold: model.Hold
+    public class HoldViewModel : model.Hold
     {
     }
 }

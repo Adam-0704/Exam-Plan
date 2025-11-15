@@ -7,7 +7,7 @@ using ClassLibrary.model;
 
 namespace ClassLibrary.Repository
 {
-    internal class ExamRepo
+    public class ExamRepo
     {
         private readonly DataAccess.ExamContext _context;
 

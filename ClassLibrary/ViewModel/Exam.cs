@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary.ViewModel
 {
-    public class PersonViewModel : model.Person
+    internal class ExamViewModel : model.Exam
     {
     }
 }

@@ -25,6 +25,9 @@ namespace ExamPlan
             
             builder.Services.AddScoped<HoldRepo>();
             builder.Services.AddScoped<IHoldService, HoldService>();
+            
+            builder.Services.AddScoped<ExamRepo>();
+            builder.Services.AddScoped<IExamService, ExamService>();
 
             var app = builder.Build();
 

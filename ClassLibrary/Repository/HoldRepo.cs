@@ -7,7 +7,7 @@ using ClassLibrary.model;
 
 namespace ClassLibrary.Repository
 {
-    internal class HoldRepo
+    public class HoldRepo
     {
         private readonly DataAccess.ExamContext _context;
 

@@ -20,3 +20,24 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+input, select {
+    padding: 5px;
+    margin: 5px 0;
+    width: 300px;
+}
+
+button {
+    padding: 8px 15px;
+    margin-top: 10px;
+}
+
+table {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}

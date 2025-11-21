@@ -6,7 +6,7 @@
 
 
 
-<h1>Create Employee</h1>
+<h1>Opret Medarbejder</h1>
 
 @if (!string.IsNullOrEmpty(Model.Message))
 {
@@ -16,12 +16,12 @@
 <form method="post">
     <div>
         <label>Navn:</label><br/>
-        <input asp-for="NewPerson.Name" type="text" required />
+        <input asp-for="CurrentPerson.Name" type="text" required />
     </div>
 
     <div>
         <label>Rolle:</label><br/>
-        <select asp-for="NewPerson.Rolle" required>
+        <select asp-for="CurrentPerson.Rolle" required>
             <option value="">-- Vælg Rolle --</option>
             @foreach (var role in Model.RoleOptions)
             {

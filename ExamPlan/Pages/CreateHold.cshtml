@@ -1,0 +1,48 @@
+@page
+@model ExamPlan.Pages.CreateHoldModel
+@{
+    ViewData["Title"] = "Opret Hold";
+}
+
+
+
+<h1>Opret Hold</h1>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <p><strong>@Model.Message</strong></p>
+}
+
+<form method="post">
+    <div>
+        <label>Hold ID:</label><br/>
+        <input asp-for="CurrentHold.HoldId" type="text" required />
+    </div>
+
+    <button type="submit">Opret Hold</button>
+</form>
+
+<h2>Alle Hold</h2>
+
+@if (Model.AllHold.Any())
+{
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Hold ID</th>
+        </tr>
+        @foreach (var hold in Model.AllHold)
+        {
+            <tr>
+                <td>@hold.Id</td>
+                <td>@hold.HoldId</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Hold ikke fundet.</p>
+}
+
+

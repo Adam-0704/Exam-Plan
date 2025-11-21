@@ -1,3 +1,4 @@
+using System.Globalization;
 using ClassLibrary.model;
 using ClassLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ namespace ExamPlan.Pages
         }
 
         [BindProperty]
-        public Person NewPerson { get; set; } = new Person();
+        public Person CurrentPerson { get; set; } = new Person();
 
         public List<Person> AllEmployees { get; set; } = new List<Person>();
 
@@ -28,9 +29,15 @@ namespace ExamPlan.Pages
             "Administrator"
         };
 
-        public void OnGet()
+        public void OnGet(int? personid)
         {
             AllEmployees = _personService.GetAllPeople();
+            if (personid.HasValue)
+            { 
+                CurrentPerson = _personService.GetPersonById(personid.Value);
+            }
+
+            
         }
 
         public IActionResult OnPost()
@@ -43,10 +50,10 @@ namespace ExamPlan.Pages
 
             try
             {
-                _personService.AddPerson(NewPerson);
+                _personService.AddPerson(CurrentPerson);
                 Message = "Employee added successfully!";
                 ModelState.Clear();
-                NewPerson = new Person();
+                CurrentPerson = new Person();
             }
             catch (Exception ex)
             {

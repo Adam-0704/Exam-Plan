@@ -63,6 +63,21 @@ namespace ExamPlan.Pages
             AllEmployees = _personService.GetAllPeople();
             return Page();
         }
+        public IActionResult OnPostDelete(int deleteId)
+        {
+            try
+            {
+                _personService.DeletePerson(deleteId);
+                Message = "Medarbejder slettet!";
+            }
+            catch (Exception ex)
+            {
+                Message = $"Fejl ved sletning: {ex.Message}";
+            }
+
+            AllEmployees = _personService.GetAllPeople();
+            return Page();
+        }
     }
 }
 

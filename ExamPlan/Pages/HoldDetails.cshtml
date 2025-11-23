@@ -1,0 +1,42 @@
+@page
+@model ExamPlan.Pages.HoldDetailsModel
+@{
+    ViewData["Title"] = "Hold Detaljer";
+}
+
+<h1>Hold Detaljer</h1>
+
+@if (Model.Hold != null)
+{
+    <div style="max-width: 600px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #f9f9f9;">
+        <div style="margin-bottom: 15px;">
+            <strong>ID:</strong>
+            <p>@Model.Hold.Id</p>
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <strong>Hold ID:</strong>
+            <p>@Model.Hold.HoldId</p>
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <strong>Antal Eksamener:</strong>
+            <p>@Model.Hold.Exams.Count</p>
+        </div>
+    </div>
+    
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="/CreateHold">
+            <button type="button">Tilbage til Liste</button>
+        </a>
+        
+    </div>
+}
+else
+{
+    <p>Hold ikke fundet.</p>
+    <a href="/CreateHold">
+        <button type="button">Tilbage til Liste</button>
+    </a>
+}
+

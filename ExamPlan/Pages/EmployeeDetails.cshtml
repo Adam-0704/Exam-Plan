@@ -9,27 +9,45 @@
 @if (Model.Employee != null)
 {
     <div style="max-width: 600px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #f9f9f9;">
-        <div style="margin-bottom: 15px;">
-            <strong>Navn:</strong>
-            <p>@Model.Employee.Name</p>
-        </div>
+        <form method="post" asp-page-handler="Update">
+            <input type="hidden" asp-for="Employee.Id" />
+            
+            <div style="margin-bottom: 15px;">
+                <label><strong>Navn:</strong></label><br/>
+                <input asp-for="Employee.Name" type="text" required style="width: 100%; padding: 5px;" />
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <label><strong>Rolle:</strong></label><br/>
+                <select asp-for="Employee.Rolle" required style="width: 100%; padding: 5px;">
+                    <option value="">-- Vælg Rolle --</option>
+                    @foreach (var role in Model.RoleOptions)
+                    {
+                        <option value="@role">@role</option>
+                    }
+                </select>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <strong>Antal Eksamener:</strong>
+                <p>@Model.Employee.Assignment.Count</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button type="submit">Gem Ændringer</button>
+            </div>
+        </form>
         
-        <div style="margin-bottom: 15px;">
-            <strong>Rolle:</strong>
-            <p>@Model.Employee.Rolle</p>
-        </div>
-        
-        <div style="margin-bottom: 15px;">
-            <strong>Antal Eksamener:</strong>
-            <p>@Model.Employee.Assignment.Count</p>
-        </div>
+        <form method="post" asp-page-handler="Delete" style="margin-top: 10px; text-align: center;" onsubmit="return confirm('Er du sikker på, at du vil slette denne medarbejder?');">
+            <input type="hidden" name="deleteId" value="@Model.Employee.Id" />
+            <button type="submit">Slet</button>
+        </form>
     </div>
     
     <div style="margin-top: 20px; text-align: center;">
         <a href="/CreateEmployee">
             <button type="button">Tilbage til Liste</button>
         </a>
-        
     </div>
 }
 else

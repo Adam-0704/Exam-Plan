@@ -26,19 +26,27 @@
 
 @if (Model.AllHold.Any())
 {
+     <div style="max-height:400px; overflow-y:auto;"> 
     <table>
         <tr>
             <th>ID</th>
             <th>Hold ID</th>
+            <th></th>
         </tr>
         @foreach (var hold in Model.AllHold)
         {
             <tr>
                 <td>@hold.Id</td>
                 <td>@hold.HoldId</td>
+                    <td>
+                        <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Er du sikker på, at du vil slette dette Hold?');">
+                            <button type="submit" name="deleteId" value="@hold.Id">Slet</button>
+                        </form>
+                    </td>
             </tr>
         }
     </table>
+    </div>
 }
 else
 {

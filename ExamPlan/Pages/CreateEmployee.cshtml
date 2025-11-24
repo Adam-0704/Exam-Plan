@@ -37,11 +37,13 @@
 
 @if (Model.AllEmployees.Any())
 {
-    <table>
+     <div style="max-height:400px; overflow-y:auto;"> </div>
+   <table>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Role</th>
+            <th></th>
         </tr>
         @foreach (var employee in Model.AllEmployees)
         {
@@ -49,6 +51,11 @@
                 <td>@employee.Id</td>
                 <td>@employee.Name</td>
                 <td>@employee.Rolle</td>
+                <td>
+                    <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Er du sikker på, at du vil slette denne medarbejder?');">
+                        <button type="submit" name="deleteId" value="@employee.Id">Slet</button>
+                    </form>
+                </td>
             </tr>
         }
     </table>

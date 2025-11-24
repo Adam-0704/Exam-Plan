@@ -53,6 +53,21 @@ namespace ExamPlan.Pages
             AllHold = _holdService.GetAllHold();
             return Page();
         }
+        public IActionResult OnPostDelete(int deleteId)
+        {
+            try
+            {
+                _holdService.DeleteHold(deleteId); // forudsætter, at din service har DeleteHold-metode
+                Message = "Hold slettet!";
+            }
+            catch (Exception ex)
+            {
+                Message = $"Fejl ved sletning: {ex.Message}";
+            }
+
+            AllHold = _holdService.GetAllHold();
+            return Page();
+        }
     }
 }
 

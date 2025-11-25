@@ -1,0 +1,90 @@
+@page
+@model ExamPlan.Pages.CreateExamModel
+@{
+    ViewData["Title"] = "Opret Eksamen";
+}
+
+
+
+<h1>Opret Eksamen</h1>
+
+@if (!string.IsNullOrEmpty(Model.Message))
+{
+    <p><strong>@Model.Message</strong></p>
+}
+
+<form method="post">
+    <div>
+        <label>Navn:</label><br/>
+        <input asp-for="CurrentExam.Name" type="text" required />
+    </div>
+
+    <div>
+        <label>Type:</label><br/>
+        <select asp-for="CurrentExam.Type" required>
+            <option value="">-- Vælg Type --</option>
+            @foreach (var examType in Model.ExamTypeOptions)
+            {
+                <option value="@examType">@examType</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Eksamensdato:</label><br/>
+        <input asp-for="CurrentExam.ExamDate" type="datetime-local" required />
+    </div>
+
+    <div>
+        <label>Hold:</label><br/>
+        <select asp-for="CurrentExam.HoldId" required>
+            <option value="">-- Vælg Hold --</option>
+            @foreach (var hold in Model.AllHold)
+            {
+                <option value="@hold.Id">@hold.HoldId</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit">Opret Eksamen</button>
+</form>
+
+<h2>Alle Eksamener</h2>
+
+@if (Model.AllExams.Any())
+{
+    <div style="max-height:400px; overflow-y:auto;">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Navn</th>
+                <th>Type</th>
+                <th>Eksamensdato</th>
+                <th>Hold ID</th>
+                <th></th>
+            </tr>
+            @foreach (var exam in Model.AllExams)
+            {
+                <tr>
+                    <td>@exam.Id</td>
+                    <td>@exam.Name</td>
+                    <td>@exam.Type</td>
+                    <td>@exam.ExamDate.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@exam.HoldId</td>
+                    <td style="text-align: right;">
+                        <a href="/ExamDetails?id=@exam.Id">
+                            <button type="button">Detaljer</button>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <p>Eksamen ikke fundet.</p>
+}
+
+
+

@@ -48,7 +48,7 @@ namespace ClassLibrary.Migrations
 
                     b.HasIndex("HoldId");
 
-                    b.ToTable("Exams");
+                    b.ToTable("Exams", (string)null);
                 });
 
             modelBuilder.Entity("ClassLibrary.model.ExamAssignment", b =>
@@ -71,7 +71,7 @@ namespace ClassLibrary.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("ExamAssignments");
+                    b.ToTable("ExamAssignments", (string)null);
                 });
 
             modelBuilder.Entity("ClassLibrary.model.Hold", b =>
@@ -88,7 +88,7 @@ namespace ClassLibrary.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hold");
+                    b.ToTable("Hold", (string)null);
                 });
 
             modelBuilder.Entity("ClassLibrary.model.Person", b =>
@@ -109,7 +109,7 @@ namespace ClassLibrary.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("People");
+                    b.ToTable("People", (string)null);
                 });
 
             modelBuilder.Entity("ClassLibrary.model.Exam", b =>

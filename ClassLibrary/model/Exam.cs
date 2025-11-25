@@ -14,8 +14,8 @@ namespace ClassLibrary.model
         public DateTime ExamDate { get; set; }
 
         public int HoldId { get; set; }
-        public Hold Hold { get; set; }
+        public Hold? Hold { get; set; }
 
-        public ICollection<ExamAssignment> Assignments { get; set; } = new List<ExamAssignment>();
+        public ICollection<ExamAssignment>? Assignments { get; set; } = new List<ExamAssignment>();
     }
 }

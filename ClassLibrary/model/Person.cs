@@ -12,7 +12,7 @@ namespace ClassLibrary.model
 
         public string Name { get; set; }
 
-        public string Rolle { get; set; }
+        public string Rolle { get; set; } = string.Empty;
 
         public ICollection<ExamAssignment> Assignment { get; set; } = new List<ExamAssignment>();
     }

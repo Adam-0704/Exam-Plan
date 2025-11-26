@@ -20,8 +20,10 @@ namespace ExamPlan.Pages
         public List<string> RoleOptions { get; set; } = new List<string>
         {
             "Lærer",
-            "Censor",
-            "Administrator"
+            "Intern Censor",
+            "Intern Censor",
+            "Administrator",
+            "EksamensVagt"
         };
 
         public void OnGet(int id)

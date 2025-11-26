@@ -43,6 +43,11 @@
                             <button type="button">Detaljer</button>
                         </a>
                     </td>
+                    <td>
+                        <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Er du sikker på, at du vil slette dette hold?');">
+                            <button type="submit" name="deleteId" value="@hold.Id">Slet</button>
+                        </form>
+                    </td>
                 </tr>
             }
         </table>

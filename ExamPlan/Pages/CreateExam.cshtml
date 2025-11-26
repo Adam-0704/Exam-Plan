@@ -76,6 +76,11 @@
                             <button type="button">Detaljer</button>
                         </a>
                     </td>
+                    <td>
+                        <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Er du sikker på, at du vil slette denne eksamen?');">
+                            <button type="submit" name="deleteId" value=@exam.Id>Slet</button>
+                        </form>
+                    </td>
                 </tr>
             }
         </table>

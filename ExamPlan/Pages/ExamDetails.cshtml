@@ -1,0 +1,77 @@
+@page
+@model ExamPlan.Pages.ExamDetailsModel
+@{
+    ViewData["Title"] = "Eksamen Detaljer";
+}
+
+<h1>Eksamen Detaljer</h1>
+
+@if (Model.Exam != null)
+{
+    <div style="max-width: 600px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #f9f9f9;">
+        <form method="post" asp-page-handler="Update">
+            <input type="hidden" asp-for="Exam.Id" />
+            
+            <div style="margin-bottom: 15px;">
+                <label><strong>Navn:</strong></label><br/>
+                <input asp-for="Exam.Name" type="text" required style="width: 100%; padding: 5px;" />
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <label><strong>Type:</strong></label><br/>
+                <select asp-for="Exam.Type" required style="width: 100%; padding: 5px;">
+                    <option value="">-- Vælg Type --</option>
+                    @foreach (var examType in Model.ExamTypeOptions)
+                    {
+                        <option value="@examType">@examType</option>
+                    }
+                </select>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <label><strong>Eksamensdato:</strong></label><br/>
+                <input asp-for="Exam.ExamDate" type="datetime-local" required style="width: 100%; padding: 5px;" />
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <label><strong>Hold:</strong></label><br/>
+                <select asp-for="Exam.HoldId" required style="width: 100%; padding: 5px;">
+                    <option value="">-- Vælg Hold --</option>
+                    @foreach (var hold in Model.AllHold)
+                    {
+                        <option value="@hold.Id">@hold.HoldId</option>
+                    }
+                </select>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+                <strong>Antal Tildelinger:</strong>
+                <p>@Model.Exam.Assignments.Count</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button type="submit">Gem Ændringer</button>
+            </div>
+        </form>
+        
+        <form method="post" asp-page-handler="Delete" style="margin-top: 10px; text-align: center;" onsubmit="return confirm('Er du sikker på, at du vil slette denne eksamen?');">
+            <input type="hidden" name="deleteId" value="@Model.Exam.Id" />
+            <button type="submit">Slet</button>
+        </form>
+    </div>
+    
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="/CreateExam">
+            <button type="button">Tilbage til Liste</button>
+        </a>
+    </div>
+}
+else
+{
+    <p>Eksamen ikke fundet.</p>
+    <a href="/CreateExam">
+        <button type="button">Tilbage til Liste</button>
+    </a>
+}
+
+

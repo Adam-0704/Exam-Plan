@@ -72,7 +72,7 @@
                     <td>@exam.ExamDate.ToString("dd/MM/yyyy HH:mm")</td>
                     <td>@exam.HoldId</td>
                     <td style="text-align: right;">
-                        <a href="/ExamDetails?id=@exam.Id">
+                        <a asp-page="/ExamDetails" asp-route-id="@exam.Id">
                             <button type="button">Detaljer</button>
                         </a>
                     </td>

@@ -45,8 +45,8 @@
             </div>
             
             <div style="margin-bottom: 15px;">
-                <strong>Antal Tildelinger:</strong>
-                <p>@Model.Exam.Assignments.Count</p>
+                <strong>Antal Personer:</strong>
+                <p>@(Model.Exam.Assignments?.Count ?? 0)</p>
             </div>
             
             <div style="text-align: center; margin-top: 20px;">

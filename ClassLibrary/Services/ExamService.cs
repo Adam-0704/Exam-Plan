@@ -33,7 +33,7 @@ namespace ClassLibrary.Services
             ValidateExam(exam);
             return _examRepo.Add(exam);
         }
-
+        
         public void UpdateExam(Exam exam)
         {
             ValidateExam(exam);

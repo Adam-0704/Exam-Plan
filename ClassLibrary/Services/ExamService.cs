@@ -70,6 +70,11 @@ namespace ClassLibrary.Services
             var exams = _examRepo.GetAll();
             return exams.Where(e => e.HoldId == holdId).ToList();
         }
+
+        public List<Exam> GetExamsByPersonId(int personId)
+        {
+            return _examRepo.GetExamsByPersonId(personId);
+        }
     }
 }
 

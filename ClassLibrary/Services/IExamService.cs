@@ -15,6 +15,7 @@ namespace ClassLibrary.Services
         void UpdateExam(Exam exam);
         void DeleteExam(int id);
         List<Exam> GetExamsByHoldId(int holdId);
+        List<Exam> GetExamsByPersonId(int personId);
     }
 }
 

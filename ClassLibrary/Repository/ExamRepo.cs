@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary.model;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClassLibrary.Repository
 {
@@ -16,12 +17,16 @@ namespace ClassLibrary.Repository
             _context = context;
         }
 
-        public List<Exam> GetAll() => _context.Exams.ToList();
+        public List<Exam> GetAll() => _context.Exams
+            .Include(e => e.Assignments!)
+                .ThenInclude(a => a.Person)
+            .ToList();
 
-        public void Add(Exam exam)
+        public Exam Add(Exam exam)
         {
             _context.Exams.Add(exam);
             _context.SaveChanges();
+            return exam;
         }
 
         public void Update(Exam exam)

@@ -28,12 +28,12 @@ namespace ClassLibrary.Services
             return exams.FirstOrDefault(e => e.Id == id);
         }
 
-        public void AddExam(Exam exam)
+        public Exam AddExam(Exam exam)
         {
             ValidateExam(exam);
-            _examRepo.Add(exam);
+            return _examRepo.Add(exam);
         }
-
+        
         public void UpdateExam(Exam exam)
         {
             ValidateExam(exam);

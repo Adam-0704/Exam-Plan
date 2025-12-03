@@ -46,6 +46,26 @@
         </select>
     </div>
 
+    <div>
+        <label>Personer:</label><br/>
+        <div style="max-height:200px; overflow-y:auto; border:1px solid #ccc; padding:10px;">
+            @if (Model.AllPersons.Any())
+            {
+                @foreach (var person in Model.AllPersons)
+                {
+                    <div>
+                        <input type="checkbox" name="SelectedPersonIds" value="@person.Id" id="person_@person.Id" />
+                        <label for="person_@person.Id">@person.Name (@person.Rolle)</label>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>Ingen personer tilgængelige.</p>
+            }
+        </div>
+    </div>
+
     <button type="submit">Opret Eksamen</button>
 </form>
 

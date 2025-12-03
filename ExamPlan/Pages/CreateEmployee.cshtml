@@ -13,14 +13,13 @@
     <p><strong>@Model.Message</strong></p>
 }
 
-<form method="post">
-    <div>
-        <label>Navn:</label><br/>
+<form method="post" class="form-container">
+    <div class="form-group">
+        <label>Navn:</label>
         <input asp-for="CurrentPerson.Name" type="text" required />
     </div>
-
-    <div>
-        <label>Rolle:</label><br/>
+    <div class="form-group">
+        <label>Rolle:</label>
         <select asp-for="CurrentPerson.Rolle" required>
             <option value="">-- Vælg Rolle --</option>
             @foreach (var role in Model.RoleOptions)
@@ -29,7 +28,6 @@
             }
         </select>
     </div>
-
     <button type="submit">Opret Medarbejder</button>
 </form>
 
@@ -37,12 +35,13 @@
 
 @if (Model.AllEmployees.Any())
 {
-    <div style="max-height:400px; overflow-y:auto;">
+    <div class="scrollable-container">
         <table>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Role</th>
+                <th></th>
                 <th></th>
             </tr>
             @foreach (var employee in Model.AllEmployees)
@@ -51,14 +50,14 @@
                     <td>@employee.Id</td>
                     <td>@employee.Name</td>
                     <td>@employee.Rolle</td>
-                    <td style="text-align: right;">
+                    <td>
                         <a href="/EmployeeDetails?id=@employee.Id">
                             <button type="button">Detaljer</button>
                         </a>
                     </td>
                     <td>
                         <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Er du sikker på, at du vil slette denne medarbejder?');">
-                            <button type="submit" name="deleteId" value="@employee.Id">Slet</button>
+                            <button type="submit" name="deleteId" value="@employee.Id" class="btn-delete">Slet</button>
                         </form>
                     </td>
                 </tr>

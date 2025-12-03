@@ -13,12 +13,11 @@
     <p><strong>@Model.Message</strong></p>
 }
 
-<form method="post">
-    <div>
-        <label>Hold ID:</label><br/>
+<form method="post" class="form-container">
+    <div class="form-group">
+        <label>Hold ID:</label>
         <input asp-for="CurrentHold.HoldId" type="text" required />
     </div>
-
     <button type="submit">Opret Hold</button>
 </form>
 
@@ -26,11 +25,12 @@
 
 @if (Model.AllHold.Any())
 {
-    <div style="max-height:400px; overflow-y:auto;">
+    <div class="scrollable-container">
         <table>
             <tr>
                 <th>ID</th>
                 <th>Hold ID</th>
+                <th></th>
                 <th></th>
             </tr>
             @foreach (var hold in Model.AllHold)
@@ -38,14 +38,14 @@
                 <tr>
                     <td>@hold.Id</td>
                     <td>@hold.HoldId</td>
-                    <td style="text-align: right;">
+                    <td>
                         <a href="/HoldDetails?id=@hold.Id">
                             <button type="button">Detaljer</button>
                         </a>
                     </td>
                     <td>
-                        <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Er du sikker på, at du vil slette dette hold?');">
-                            <button type="submit" name="deleteId" value="@hold.Id">Slet</button>
+                        <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Er du sikker pÃ¥, at du vil slette dette hold?');">
+                            <button type="submit" name="deleteId" value="@hold.Id" class="btn-delete">Slet</button>
                         </form>
                     </td>
                 </tr>

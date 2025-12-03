@@ -6,9 +6,9 @@
 
 <h1>Skema</h1>
 
-<form method="post">
-    <div>
-        <label>Vælg Person:</label><br />
+<form method="post" class="form-container">
+    <div class="form-group">
+        <label>Vælg Person:</label>
         <select asp-for="SelectedPersonId" required>
             <option value="">-- Vælg Person --</option>
             @foreach (var person in Model.AllPersons)
@@ -17,7 +17,6 @@
             }
         </select>
     </div>
-
     <button type="submit">Se Skema</button>
 </form>
 
@@ -27,7 +26,7 @@
 
     @if (Model.PersonExams.Any())
     {
-        <div style="max-height:400px; overflow-y:auto;">
+        <div class="scrollable-container">
             <table>
                 <tr>
                     <th>Eksamen</th>

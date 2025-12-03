@@ -8,42 +8,32 @@
 
 @if (Model.Hold != null)
 {
-    <div style="max-width: 600px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #f9f9f9;">
+    <div class="form-container">
         <form method="post" asp-page-handler="Update">
             <input type="hidden" asp-for="Hold.Id" />
             
-            <div style="margin-bottom: 15px;">
-                <label><strong>Hold ID:</strong></label><br/>
-                <input asp-for="Hold.HoldId" type="text" required style="width: 100%; padding: 5px;" />
+            <div class="form-group">
+                <label><strong>Hold ID:</strong></label>
+                <input asp-for="Hold.HoldId" type="text" required />
             </div>
             
-            <div style="margin-bottom: 15px;">
+            <div class="form-group">
                 <strong>Antal Eksamener:</strong>
                 <p>@Model.Hold.Exams.Count</p>
             </div>
             
-            <div style="text-align: center; margin-top: 20px;">
-                <button type="submit">Gem Ændringer</button>
-            </div>
+            <button type="submit">Gem Ændringer</button>
         </form>
-        
-        <form method="post" asp-page-handler="Delete" style="margin-top: 10px; text-align: center;" onsubmit="return confirm('Er du sikker på, at du vil slette dette hold?');">
+        <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Er du sikker på, at du vil slette dette hold?');">
             <input type="hidden" name="deleteId" value="@Model.Hold.Id" />
-            <button type="submit">Slet</button>
+            <button type="submit" class="btn-delete">Slet</button>
         </form>
     </div>
-    
-    <div style="margin-top: 20px; text-align: center;">
-        <a href="/CreateHold">
-            <button type="button">Tilbage til Liste</button>
-        </a>
-    </div>
+    <p><a href="/CreateHold">Tilbage til Liste</a></p>
 }
 else
 {
     <p>Hold ikke fundet.</p>
-    <a href="/CreateHold">
-        <button type="button">Tilbage til Liste</button>
-    </a>
+    <p><a href="/CreateHold">Tilbage til Liste</a></p>
 }
 

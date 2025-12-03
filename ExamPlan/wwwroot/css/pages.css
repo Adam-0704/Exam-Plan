@@ -1,0 +1,72 @@
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #e5e5e5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #e5e5e5;
+}
+
+button {
+    padding: 8px 16px;
+    border: 1px solid #1861ac;
+    cursor: pointer;
+}
+
+button[type="submit"]:not(.btn-delete) {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.btn-delete {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #e5e5e5;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #e5e5e5;
+}
+
+th {
+    background-color: #f8f9fa;
+}
+
+.scrollable-container {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #e5e5e5;
+    margin-top: 20px;
+}
+
+.scrollable-container-small {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #e5e5e5;
+    padding: 10px;
+}

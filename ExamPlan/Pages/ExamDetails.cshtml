@@ -8,18 +8,18 @@
 
 @if (Model.Exam != null)
 {
-    <div style="max-width: 600px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #f9f9f9;">
+    <div class="form-container">
         <form method="post" asp-page-handler="Update">
             <input type="hidden" asp-for="Exam.Id" />
             
-            <div style="margin-bottom: 15px;">
-                <label><strong>Navn:</strong></label><br/>
-                <input asp-for="Exam.Name" type="text" required style="width: 100%; padding: 5px;" />
+            <div class="form-group">
+                <label><strong>Navn:</strong></label>
+                <input asp-for="Exam.Name" type="text" required />
             </div>
             
-            <div style="margin-bottom: 15px;">
-                <label><strong>Type:</strong></label><br/>
-                <select asp-for="Exam.Type" required style="width: 100%; padding: 5px;">
+            <div class="form-group">
+                <label><strong>Type:</strong></label>
+                <select asp-for="Exam.Type" required>
                     <option value="">-- Vælg Type --</option>
                     @foreach (var examType in Model.ExamTypeOptions)
                     {
@@ -28,14 +28,14 @@
                 </select>
             </div>
             
-            <div style="margin-bottom: 15px;">
-                <label><strong>Eksamensdato:</strong></label><br/>
-                <input asp-for="Exam.ExamDate" type="datetime-local" required style="width: 100%; padding: 5px;" />
+            <div class="form-group">
+                <label><strong>Eksamensdato:</strong></label>
+                <input asp-for="Exam.ExamDate" type="datetime-local" required />
             </div>
             
-            <div style="margin-bottom: 15px;">
-                <label><strong>Hold:</strong></label><br/>
-                <select asp-for="Exam.HoldId" required style="width: 100%; padding: 5px;">
+            <div class="form-group">
+                <label><strong>Hold:</strong></label>
+                <select asp-for="Exam.HoldId" required>
                     <option value="">-- Vælg Hold --</option>
                     @foreach (var hold in Model.AllHold)
                     {
@@ -44,34 +44,24 @@
                 </select>
             </div>
             
-            <div style="margin-bottom: 15px;">
+            <div class="form-group">
                 <strong>Antal Personer:</strong>
                 <p>@(Model.Exam.Assignments?.Count ?? 0)</p>
             </div>
             
-            <div style="text-align: center; margin-top: 20px;">
-                <button type="submit">Gem Ændringer</button>
-            </div>
+            <button type="submit">Gem Ændringer</button>
         </form>
-        
-        <form method="post" asp-page-handler="Delete" style="margin-top: 10px; text-align: center;" onsubmit="return confirm('Er du sikker på, at du vil slette denne eksamen?');">
+        <form method="post" asp-page-handler="Delete" onsubmit="return confirm('Er du sikker på, at du vil slette denne eksamen?');">
             <input type="hidden" name="deleteId" value="@Model.Exam.Id" />
-            <button type="submit">Slet</button>
+            <button type="submit" class="btn-delete">Slet</button>
         </form>
     </div>
-    
-    <div style="margin-top: 20px; text-align: center;">
-        <a href="/CreateExam">
-            <button type="button">Tilbage til Liste</button>
-        </a>
-    </div>
+    <p><a href="/CreateExam">Tilbage til Liste</a></p>
 }
 else
 {
     <p>Eksamen ikke fundet.</p>
-    <a href="/CreateExam">
-        <button type="button">Tilbage til Liste</button>
-    </a>
+    <p><a href="/CreateExam">Tilbage til Liste</a></p>
 }
 
 

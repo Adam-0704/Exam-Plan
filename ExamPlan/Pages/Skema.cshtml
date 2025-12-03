@@ -1,0 +1,61 @@
+@page
+@model ExamPlan.Pages.SkemaModel
+@{
+    ViewData["Title"] = "Skema";
+}
+
+<h1>Skema</h1>
+
+<form method="post">
+    <div>
+        <label>Vælg Person:</label><br />
+        <select asp-for="SelectedPersonId" required>
+            <option value="">-- Vælg Person --</option>
+            @foreach (var person in Model.AllPersons)
+            {
+                <option value="@person.Id">@person.Name (@person.Rolle)</option>
+            }
+        </select>
+    </div>
+
+    <button type="submit">Se Skema</button>
+</form>
+
+@if (Model.SelectedPerson != null)
+{
+    <h2>Skema for @Model.SelectedPerson.Name</h2>
+
+    @if (Model.PersonExams.Any())
+    {
+        <div style="max-height:400px; overflow-y:auto;">
+            <table>
+                <tr>
+                    <th>Eksamen</th>
+                    <th>Type</th>
+                    <th>Dato</th>
+                    <th>Hold</th>
+                    <th></th>
+                </tr>
+                @foreach (var exam in Model.PersonExams)
+                {
+                    <tr>
+                        <td>@exam.Name</td>
+                        <td>@exam.Type</td>
+                        <td>@exam.ExamDate.ToString("dd-MM-yyyy")</td>
+                        <td>@(exam.Hold?.HoldId ?? "Ikke tildelt")</td>
+                        <td>
+                            <a href="/ExamDetails?id=@exam.Id">
+                                <button type="button">Detaljer</button>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+    else
+    {
+        <p>Ingen eksamener fundet for denne person.</p>
+    }
+}
+

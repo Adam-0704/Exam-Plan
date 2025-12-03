@@ -40,5 +40,15 @@ namespace ClassLibrary.Repository
             _context.Exams.Remove(exam);
             _context.SaveChanges();
         }
+
+        public List<Exam> GetExamsByPersonId(int personId)
+        {
+            return _context.Exams
+                .Include(e => e.Hold)
+                .Include(e => e.Assignments)
+                .Where(e => e.Assignments != null && e.Assignments.Any(a => a.PersonId == personId))
+                .OrderBy(e => e.ExamDate)
+                .ToList();
+        }
     }
 }

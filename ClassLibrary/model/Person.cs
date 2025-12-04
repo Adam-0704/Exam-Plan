@@ -15,6 +15,7 @@ namespace ClassLibrary.model
         public string Rolle { get; set; } = string.Empty;
 
         public ICollection<Exam> Exams { get; set; } = new List<Exam>();
-        public ICollection<ExamAssignment> Assignment { get; set; } = new List<ExamAssignment>();
+        public ICollection<ExamAssignment>? Assignment { get; set; } = new List<ExamAssignment>();
+        public ICollection<Hold>? Holds { get; set; } = new List<Hold>();
     }
 }

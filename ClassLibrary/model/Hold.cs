@@ -11,6 +11,7 @@ namespace ClassLibrary.model
         public int Id { get; set; }
         public string HoldId { get; set; }
 
-        public ICollection<Exam> Exams { get; set; } = new List<Exam>();
+        public ICollection<Exam>? Exams { get; set; } = new List<Exam>();
+        public ICollection<Person>? Persons { get; set; } = new List<Person>();
     }
 }

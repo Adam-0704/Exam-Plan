@@ -54,6 +54,10 @@ namespace ClassLibrary.Services
             {
                 throw new ArgumentException("ExamDate must be set");
             }
+            if (_examRepo.GetAll().Any(exam => exam.Id != exam.Id && exam.ExamDate == exam.ExamDate))
+            {
+                throw new InvalidOperationException("Eksamen kan ikke overlappe med en eksisterende eksamen på samme tidspunkt.");
+            }
         }
 
         public void DeleteExam(int id)
